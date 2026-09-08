@@ -76,12 +76,15 @@ Transferred amount: $10.00
 3. Select the same account in both **From account** and **to account** drop-down fields <br>
 **Expected Result:** The same account is selected in both  **From account** and **to account** drop-down fields
 4. Click Transfer <br>
-**Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account
+**Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account (It does not make sense) 
 5. Navigate to **Accounts Overview** and check the selected account balance
 **Expected Result:** The account balance remains unchanged and there is no transfer transaction recorded 
 
 **Test Data:**  
 Amount: $10.00
+
+**Screenshot:**<br>
+![Transfer with same from and to account](./screenshots/transfer-with-same-from-and-to-account.png)
 
 **NOTE:**  
 The transaction goes through without errors, and this needs to have a bug logged if the acceptance criteria clearly states that the user should not:
