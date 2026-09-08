@@ -26,7 +26,7 @@
 Amount: $10.00
 
 **Screenshot:**<br>
-![Transfer complete](.screenshots/transfer-complete.png)
+![Transfer complete](./screenshots/transfer-complete.png)
 
 ---
 
