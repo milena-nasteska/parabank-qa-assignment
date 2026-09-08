@@ -57,6 +57,10 @@ Amount: $10.00
 **Test Data:**  
 Transferred amount: $10.00
 
+**Screenshot:**<br>
+![Accounts Overview](./screenshots/accounts-overview.png)
+
+---
 
 ## TF-002 - Attempt to transfer funds to the same account
 
