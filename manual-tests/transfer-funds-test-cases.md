@@ -162,7 +162,7 @@ Account Activity after zero Amount transfer: <br>
 ### Steps:
 
 1. Open **Transfer Funds** <br>
-   **Expected Result:** The Transfer Funds screen is displayed
+   **Expected Result:** The Transfer Funds screen is displayed and shows the fields in their default state
 
 2. Enter a negative value in the **Amount** field, for example "-12" <br>
    **Expected Result:** The negative value is entered in the **Amount** field
@@ -171,10 +171,10 @@ Account Activity after zero Amount transfer: <br>
    **Expected Result:** The selected source and destination accounts are displayed correctly
 
 4. Click **Transfer** <br>
-   **Expected Result:** The transfer is not completed and a validation message is displayed indicating that the amount must be greater than zero.
+   **Expected Result:** The transfer is not completed and a validation message is displayed indicating that the amount must be greater than zero
 
-5. Check the account balances.<br>
-   **Expected Result:** The source and destination account balances remain unchanged.
+5. Check the account balances <br>
+   **Expected Result:** The source and destination account balances remain unchanged
 
  **Actual Result:** **The Transfer is completed! Transferring negative amount (-$12) from account #13899 to account #14010 results in increasing the balance of account #13899 by $12 and decreasing the balance of account #14010**
  
@@ -188,26 +188,35 @@ Account Activity after transfer with negative amount: <br>
 
 ---
 
-## TF-006 - Attempt to transfer a non-numeric amount
+## TF-007 - Transfer a non-numeric amount
 
 **Priority:** High
 
 ### Steps:
 
-1. Open **Transfer Funds**.<br>
-   **Expected Result:** The Transfer Funds screen is displayed.
+1. Click on **Transfer Funds** <br>
+   **Expected Result:** The Transfer Funds screen is displayed and shows the fields in their default state
 
-2. Enter a non-numeric value in the Amount field, for example `abc`.<br>
-   **Expected Result:** The system either prevents invalid characters from being entered or accepts the input for validation on submission.
+2. Enter a non-numeric value in the **Amount** field, for example "abc" <br>
+   **Expected Result:** The app either does not accept non-numeric input in the **Amount** field or accepts the input and shows a validation message when clicking on **Transfer** (**NOTE:** ideally should not accept the non-numeric input at all. Need to check what happens with exponential notations)
 
-3. Select different From and To accounts.<br>
-   **Expected Result:** The selected source and destination accounts are displayed correctly.
+3. Select different From and To accounts <br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly
 
-4. Click **Transfer**.<br>
-   **Expected Result:** The transfer is not completed and an appropriate validation message is displayed for the invalid amount.
+4. Click on **Transfer** <br>
+   **Expected Result:** The transfer is not completed and an appropriate validation message is displayed for the invalid amount
+   **Actual Result:** "Error! An internal error has occurred and has been logged." Network tab in dev console shows 400 Error - Bad Request
 
-5. Check the account balances.<br>
-   **Expected Result:** The source and destination account balances remain unchanged.
+ **NOTE:** This requires raising a bug 
+
+6. Check the account balances <br>
+   **Expected Result:** The source and destination account balances remain unchanged
+
+**Screenshot:**<br>
+Transfer with non-numeric amount: <br>
+![Transfer with Non-Numeric Amount](./screenshots/non-numeric-amount-transfer.png)
+Account Activity after transfer with non-numeric amount: <br>
+![Account Activity after Non-Numeric Amount transfer](./screenshots/account-activity-after-non-numeric-amount-transfer.png)
 
 ---
 
