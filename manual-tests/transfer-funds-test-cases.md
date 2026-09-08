@@ -114,3 +114,176 @@ The transaction goes through without errors, and this needs to have a bug logged
 
 **Screenshot:**<br>
 ![Transfer with Empty Amount](./screenshots/transfer-with-empty-amount.png)
+
+---
+
+## TF-005 - Attempt to transfer zero amount
+
+**Priority:** High
+
+### Steps:
+
+1. Click on **Transfer Funds** <br>
+   **Expected Result:** The **Transfer Funds** screen is displayed and shows the fields in their default state
+
+2. Enter "0" in the **Amount** field <br>
+   **Expected Result:** The value "0" is entered in the **Amount** field
+
+3. Select different account numbers in **From account** and **to account** <br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly
+
+4. Click **Transfer** <br>
+   **Expected Result:** The transfer is not completed and a validation message is displayed indicating that the amount must be greater than zero.
+
+5. Check the account balances <br>
+   **Expected Result:** The source and destination account balances remain unchanged
+
+**Screenshot:**<br>
+![Transfer with Zero Amount](./screenshots/zero-amount-transfer.png)
+
+---
+
+## TF-005 - Attempt to transfer a negative amount
+
+**Priority:** High
+
+### Steps:
+
+1. Open **Transfer Funds**.<br>
+   **Expected Result:** The Transfer Funds screen is displayed.
+
+2. Enter a negative value in the Amount field, for example `-100`.<br>
+   **Expected Result:** The negative value is entered in the Amount field.
+
+3. Select different From and To accounts.<br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly.
+
+4. Click **Transfer**.<br>
+   **Expected Result:** The transfer is not completed and a validation message is displayed indicating that the amount must be greater than zero.
+
+5. Check the account balances.<br>
+   **Expected Result:** The source and destination account balances remain unchanged.
+
+---
+
+## TF-006 - Attempt to transfer a non-numeric amount
+
+**Priority:** High
+
+### Steps:
+
+1. Open **Transfer Funds**.<br>
+   **Expected Result:** The Transfer Funds screen is displayed.
+
+2. Enter a non-numeric value in the Amount field, for example `abc`.<br>
+   **Expected Result:** The system either prevents invalid characters from being entered or accepts the input for validation on submission.
+
+3. Select different From and To accounts.<br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly.
+
+4. Click **Transfer**.<br>
+   **Expected Result:** The transfer is not completed and an appropriate validation message is displayed for the invalid amount.
+
+5. Check the account balances.<br>
+   **Expected Result:** The source and destination account balances remain unchanged.
+
+---
+
+## TF-007 - Transfer a valid decimal amount
+
+**Priority:** Medium
+
+### Steps:
+
+1. Open **Transfer Funds**.<br>
+   **Expected Result:** The Transfer Funds screen is displayed.
+
+2. Enter a valid decimal amount, for example `10.50`.<br>
+   **Expected Result:** The decimal value is accepted and displayed correctly in the Amount field.
+
+3. Select different From and To accounts.<br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly.
+
+4. Click **Transfer**.<br>
+   **Expected Result:** The transfer is completed successfully and a confirmation message is displayed.
+
+5. Open **Accounts Overview**.<br>
+   **Expected Result:** The source account balance is decreased by `10.50` and the destination account balance is increased by `10.50`.
+
+---
+
+## TF-008 - Attempt to transfer an amount greater than the available balance
+
+**Priority:** High
+
+**Precondition:** Source account balance is known.
+
+### Steps:
+
+1. Open **Accounts Overview** and note the available balance of the source account.<br>
+   **Expected Result:** The current balance of the source account is displayed.
+
+2. Open **Transfer Funds**.<br>
+   **Expected Result:** The Transfer Funds screen is displayed.
+
+3. Enter an amount greater than the available balance of the source account.<br>
+   **Expected Result:** The entered amount is displayed in the Amount field.
+
+4. Select the account with insufficient funds as the From account and a different account as the To account.<br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly.
+
+5. Click **Transfer**.<br>
+   **Expected Result:** The transfer is not completed and an appropriate insufficient-funds validation message is displayed.
+
+6. Check the account balances.<br>
+   **Expected Result:** The source and destination account balances remain unchanged.
+
+---
+
+## TF-009 - Verify account balances are updated correctly after a successful transfer
+
+**Priority:** High
+
+**Precondition:** A successful transfer has been completed between two different accounts and the original balances are known.
+
+### Steps:
+
+1. Open **Accounts Overview**.<br>
+   **Expected Result:** The Accounts Overview screen is displayed and both accounts are listed.
+
+2. Check the balance of the source account.<br>
+   **Expected Result:** The source account balance is decreased by exactly the transferred amount.
+
+3. Check the balance of the destination account.<br>
+   **Expected Result:** The destination account balance is increased by exactly the transferred amount.
+
+4. Verify the total balance across the user's accounts, if displayed.<br>
+   **Expected Result:** The total balance remains unchanged because the funds were transferred between the user's own accounts.
+
+---
+
+## TF-010 - Verify successful transfer is recorded in transaction history
+
+**Priority:** High
+
+**Precondition:** A successful transfer has been completed and the transfer amount is known.
+
+### Steps:
+
+1. Open **Accounts Overview**.<br>
+   **Expected Result:** The Accounts Overview screen is displayed.
+
+2. Open the source account used in the transfer.<br>
+   **Expected Result:** The account details and transaction history are displayed.
+
+3. Locate the recently completed transfer.<br>
+   **Expected Result:** A transaction corresponding to the transferred amount is present in the source account history.
+
+4. Verify the transaction details.<br>
+   **Expected Result:** The transaction shows the correct amount and is recorded as an outgoing transfer/debit.
+
+5. Open the destination account.<br>
+   **Expected Result:** The destination account details and transaction history are displayed.
+
+6. Locate the corresponding incoming transfer.<br>
+   **Expected Result:** A transaction for the same amount is present and recorded as an incoming transfer/credit.
