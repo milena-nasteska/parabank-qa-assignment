@@ -30,7 +30,7 @@ Amount: $10.00
 
 ---
 
-## TF-002 - Verify account balances in Accounts Overview after a successful transfer
+## TF-002 - Verify account balances and transaction history in Accounts Overview after a successful transfer
 
 **Priority:** High
 
@@ -63,25 +63,35 @@ Transferred amount: $10.00
 
 ---
 
-## TF-002 - Attempt to transfer funds to the same account
+## TF-003 - Attempt to transfer funds to the same account
 
-**Priority:** High
+**Priority:** Medium
 
 **Steps:**
-1. Open Transfer Funds.
-2. Enter a valid amount.
-3. Select the same account as both From and To.
-4. Click Transfer.
+1. Click on **Transfer Funds** <br>
+ **Expected Result:** The Transfer Funds screen is displayed and shows the fields in their default state
+2. Enter a valid positive numeric value in the **Amount** field <br>
+ **Expected Result:** The amount value is accepted and shows in the field
+3. Select the same account in both **From account** and **to account** drop-down fields <br>
+**Expected Result:** The same account is selected in both  **From account** and **to account** drop-down fields
+4. Click Transfer <br>
+**Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account
+5. Navigate to **Accounts Overview** and check the selected account balance
+**Expected Result:** The account balance remains unchanged and there is no transfer transaction recorded 
 
 **Test Data:**  
-Amount: 100
+Amount: $10.00
 
-**Expected Result:**  
-The transfer is not completed. The account balance remains unchanged and an appropriate validation message is displayed.
+**NOTE:**  
+The transaction goes through without errors, and this needs to have a bug logged if the acceptance criteria clearly states that the user should not:
+- transfer funds where source and destination account is the same 
+- transfer funds where the amount is negative number, zero
+- transfer funds should have defined minimum and maximum values for **Amount** and the user should not be allowed to transfer funds greater/lower than the limit values 
+- the currency should be clearly defined in the acceptance criteria as well should the user have different accounts with different currencies 
 
 ---
 
-## TF-003 - Attempt transfer with an empty amount
+## TF-004 - Attempt transfer with an empty amount
 
 **Priority:** High
 
