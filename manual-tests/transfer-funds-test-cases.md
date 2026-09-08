@@ -70,14 +70,14 @@ Transferred amount: $10.00
 
 **Steps:**
 1. Click on **Transfer Funds** <br>
- **Expected Result:** The Transfer Funds screen is displayed and shows the fields in their default state
+ **Expected Result:** The **Transfer Funds** screen is displayed and shows the fields in their default state
 2. Enter a valid positive numeric value in the **Amount** field <br>
  **Expected Result:** The amount value is accepted and shows in the field
 3. Select the same account in both **From account** and **to account** drop-down fields <br>
 **Expected Result:** The same account is selected in both  **From account** and **to account** drop-down fields
 4. Click Transfer <br>
 **Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account (It does not make sense) 
-5. Navigate to **Accounts Overview** and check the selected account balance
+5. Navigate to **Accounts Overview** and check the selected account balance <br>
 **Expected Result:** The account balance remains unchanged and there is no transfer transaction recorded 
 
 **Test Data:**  
@@ -100,10 +100,17 @@ The transaction goes through without errors, and this needs to have a bug logged
 **Priority:** High
 
 **Steps:**
-1. Open Transfer Funds.
-2. Leave the Amount field empty.
-3. Select different From and To accounts.
-4. Click Transfer.
+1. Click on **Transfer Funds** <br>
+**Expected Result:** The **Transfer Funds** screen is displayed and shows the fields in their default state
+2. Leave the **Amount** field empty <br>
+**Expected Result:** The **Amount** field is left empty
+3. Select different From and To accounts <br>
+**Expected Result:** Different account number is selected in **From account** and **to account** fields
+4. Click on **Transfer**
+**Expected Result:** The Transfer** button is either disabled until a value is provided in **Amount** field or there is a validation message displayed indicating that a valid amount is required to proceed with transfer
 
-**Expected Result:**  
-The transfer is not completed. The account balances remain unchanged and validation is displayed indicating that a valid amount is required.
+**Actual Result:** "An internal error has occurred and has been logged." message is displayed <br>
+**NOTE:** Needs logging of a bug 
+
+**Screenshot:**<br>
+![Transfer with Empty Amount](./screenshots/transfer-with-empty-amount.png)
