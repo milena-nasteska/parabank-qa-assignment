@@ -15,11 +15,14 @@
 **Steps:**
 1. Click on **Transfer Funds** <br>
 **Expected Result:** The transfer funds screen is displayed: **Amount** field shows blank by default, **From** and **To** drop-down fields display the original account number
-2. Enter a valid positive numeric value in the **Amount** field <br>
+
+3. Enter a valid positive numeric value in the **Amount** field <br>
 **Expected Result:** The amount value is accepted and shows in the field
-4. Select different **From account** and **to account** accounts <br>
+
+5. Select different **From account** and **to account** accounts <br>
 **Expected Result:** Different accounts are selected in the **From account** and **to account** fields
-5. Click **Transfer** <br>
+
+7. Click **Transfer** <br>
 **Expected Result:** "**Transfer Complete!**" message is displayed with the followign info: "$ [amountValue] has been transferred from account # [accountNumber] to account # [accountNumber]. See Account Activity for more details."
 
 **Test Data:**  
@@ -64,20 +67,24 @@ Transferred amount: $10.00
 
 ---
 
-## TF-003 - Attempt to transfer funds to the same account
+## TF-003 - Transfer funds to the same account
 
 **Priority:** Medium
 
 **Steps:**
 1. Click on **Transfer Funds** <br>
  **Expected Result:** The **Transfer Funds** screen is displayed and shows the fields in their default state
-2. Enter a valid positive numeric value in the **Amount** field <br>
+   
+3. Enter a valid positive numeric value in the **Amount** field <br>
  **Expected Result:** The amount value is accepted and shows in the field
-3. Select the same account in both **From account** and **to account** drop-down fields <br>
+   
+5. Select the same account in both **From account** and **to account** drop-down fields <br>
 **Expected Result:** The same account is selected in both  **From account** and **to account** drop-down fields
-4. Click Transfer <br>
-**Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account (It does not make sense) 
-5. Navigate to **Accounts Overview** and check the selected account balance <br>
+
+7. Click Transfer <br>
+**Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account (It does not make sense)
+
+9. Navigate to **Accounts Overview** and check the selected account balance <br>
 **Expected Result:** The account balance remains unchanged and there is no transfer transaction recorded 
 
 **Test Data:**  
@@ -95,18 +102,21 @@ The transaction goes through without errors, and this needs to have a bug logged
 
 ---
 
-## TF-004 - Attempt transfer with an empty amount
+## TF-004 - Transfer with an empty amount
 
 **Priority:** High
 
 **Steps:**
 1. Click on **Transfer Funds** <br>
 **Expected Result:** The **Transfer Funds** screen is displayed and shows the fields in their default state
-2. Leave the **Amount** field empty <br>
+
+3. Leave the **Amount** field empty <br>
 **Expected Result:** The **Amount** field is left empty
-3. Select different From and To accounts <br>
+
+5. Select different From and To accounts <br>
 **Expected Result:** Different account number is selected in **From account** and **to account** fields
-4. Click on **Transfer**
+
+7. Click on **Transfer**
 **Expected Result:** The Transfer** button is either disabled until a value is provided in **Amount** field or there is a validation message displayed indicating that a valid amount is required to proceed with transfer
 
 **Actual Result:** "An internal error has occurred and has been logged." message is displayed <br>
@@ -117,7 +127,7 @@ The transaction goes through without errors, and this needs to have a bug logged
 
 ---
 
-## TF-005 - Attempt to transfer zero amount
+## TF-005 - Transfer a zero amount
 
 **Priority:** High
 
@@ -145,7 +155,7 @@ Account Activity after zero Amount transfer: <br>
 
 ---
 
-## TF-005 - Attempt to transfer a negative amount
+## TF-006 - Transfer a negative amount
 
 **Priority:** High
 
