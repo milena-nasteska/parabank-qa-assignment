@@ -140,6 +140,8 @@ The transaction goes through without errors, and this needs to have a bug logged
 
 **Screenshot:**<br>
 ![Transfer with Zero Amount](./screenshots/zero-amount-transfer.png)
+Account Activity after zero Amount transfer: <br>
+![Account Activity after Zero Amount transfer](./screenshots/account-activity-after-zero-amount-transfer.png)
 
 ---
 
