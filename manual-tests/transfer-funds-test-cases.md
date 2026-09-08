@@ -151,20 +151,30 @@ Account Activity after zero Amount transfer: <br>
 
 ### Steps:
 
-1. Open **Transfer Funds**.<br>
-   **Expected Result:** The Transfer Funds screen is displayed.
+1. Open **Transfer Funds** <br>
+   **Expected Result:** The Transfer Funds screen is displayed
 
-2. Enter a negative value in the Amount field, for example `-100`.<br>
-   **Expected Result:** The negative value is entered in the Amount field.
+2. Enter a negative value in the **Amount** field, for example "-12" <br>
+   **Expected Result:** The negative value is entered in the **Amount** field
 
-3. Select different From and To accounts.<br>
-   **Expected Result:** The selected source and destination accounts are displayed correctly.
+3. Select different From and To accounts <br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly
 
-4. Click **Transfer**.<br>
+4. Click **Transfer** <br>
    **Expected Result:** The transfer is not completed and a validation message is displayed indicating that the amount must be greater than zero.
 
 5. Check the account balances.<br>
    **Expected Result:** The source and destination account balances remain unchanged.
+
+ **Actual Result:** **The Transfer is completed! Transferring negative amount (-$12) from account #13899 to account #14010 results in increasing the balance of account #13899 by $12 and decreasing the balance of account #14010**
+ 
+ **NOTE:** This requires logging a high severity bug. Would be critical if the accounts belong to two different people 
+
+**Screenshot:**<br>
+Transfer with negative amount: <br>
+![Transfer with Negative Amount](./screenshots/negative-amount-transfer.png)
+Account Activity after transfer with negative amount: <br>
+![Account Activity after Zero Amount transfer](./screenshots/account-activity-after-negative-amount-transfer.png)
 
 ---
 
