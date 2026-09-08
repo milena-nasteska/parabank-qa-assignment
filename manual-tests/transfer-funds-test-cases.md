@@ -57,6 +57,9 @@ Amount: $10.00
 4. Click on the account number of the source account and check the Transaction log <br>
    **Expected Result:** Under the **Account Details** info, in the **Account Activity** section the **Funds Transfer Sent** transaction log is displayed, date stamp is displayed and the amount shows in the **Debit (-)** column
 
+5. Go back and click on the account number of the destination account where the funds were credited <br>
+ **Expected Result:** Under the **Account Details** info, in the **Account Activity** section the **Funds Transfer Received** transaction log is displayed, date stamp is displayed and the amount shows under the **Credit (+)** column
+
 **Test Data:**  
 Transferred amount: $10.00
 
@@ -79,26 +82,20 @@ Transferred amount: $10.00
  **Expected Result:** The amount value is accepted and shows in the field
    
 5. Select the same account in both **From account** and **to account** drop-down fields <br>
-**Expected Result:** The same account is selected in both  **From account** and **to account** drop-down fields
+ **Expected Result:** The same account is selected in both  **From account** and **to account** drop-down fields
 
 7. Click Transfer <br>
-**Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account (It does not make sense)
+ **Expected Result:** The transfer is rejected and there is an appropriate user-friendly message informing you that funds can't be transferred to the same account <br>
+**Actual Result:** The transfer goes through. This has no business value and should be prevented
 
 9. Navigate to **Accounts Overview** and check the selected account balance <br>
-**Expected Result:** The account balance remains unchanged and there is no transfer transaction recorded 
+ **Expected Result:** The account balance remains unchanged and there is no transfer transaction recorded 
 
 **Test Data:**  
 Amount: $10.00
 
 **Screenshot:**<br>
 ![Transfer with same from and to account](./screenshots/transfer-with-same-from-and-to-account.png)
-
-**NOTE:**  
-The transaction goes through without errors, and this needs to have a bug logged if the acceptance criteria clearly states that the user should not:
-- transfer funds where source and destination account is the same 
-- transfer funds where the amount is negative number, zero
-- transfer funds should have defined minimum and maximum values for **Amount** and the user should not be allowed to transfer funds greater/lower than the limit values 
-- the currency should be clearly defined in the acceptance criteria as well should the user have different accounts with different currencies 
 
 ---
 
@@ -117,8 +114,7 @@ The transaction goes through without errors, and this needs to have a bug logged
 **Expected Result:** Different account number is selected in **From account** and **to account** fields
 
 7. Click on **Transfer**
-**Expected Result:** The Transfer** button is either disabled until a value is provided in **Amount** field or there is a validation message displayed indicating that a valid amount is required to proceed with transfer
-
+**Expected Result:** The Transfer** button is either disabled until a value is provided in **Amount** field or there is a validation message displayed indicating that a valid amount is required to proceed with transfer <br>
 **Actual Result:** "An internal error has occurred and has been logged." message is displayed <br>
 **NOTE:** Needs logging of a bug 
 
@@ -174,8 +170,7 @@ Account Activity after zero Amount transfer: <br>
    **Expected Result:** The transfer is not completed and a validation message is displayed indicating that the amount must be greater than zero
 
 5. Check the account balances <br>
-   **Expected Result:** The source and destination account balances remain unchanged
-
+ **Expected Result:** The source and destination account balances remain unchanged <br>
  **Actual Result:** **The Transfer is completed! Transferring negative amount (-$12) from account #13899 to account #14010 results in increasing the balance of account #13899 by $12 and decreasing the balance of account #14010**
  
  **NOTE:** This requires logging a high severity bug. Would be critical if the accounts belong to two different people 
@@ -204,7 +199,7 @@ Account Activity after transfer with negative amount: <br>
    **Expected Result:** The selected source and destination accounts are displayed correctly
 
 4. Click on **Transfer** <br>
-   **Expected Result:** The transfer is not completed and an appropriate validation message is displayed for the invalid amount
+   **Expected Result:** The transfer is not completed and an appropriate validation message is displayed for the invalid amount <br>
    **Actual Result:** "Error! An internal error has occurred and has been logged." Network tab in dev console shows 400 Error - Bad Request
 
  **NOTE:** This requires raising a bug 
@@ -270,11 +265,11 @@ Account Overview after transfer with decimal amount: <br>
    **Expected Result:** The selected source and destination accounts are displayed correctly
 
 5. Click on **Transfer** <br>
-   **Expected Result:** The transfer is not completed and an appropriate validation message for insufficient available balance is displayed
+   **Expected Result:** The transfer is not completed and an appropriate validation message for insufficient available balance is displayed <br>
    **Actual Result:** The transfer is completed successfully even though the transfer amount exceeds the available balance and the source account balance becomes negative, in this case -$0.02
 
 7. Check the account balances.<br>
-   **Expected Result:** The source and destination account balances remain unchanged
+   **Expected Result:** The source and destination account balances remain unchanged <br>
    **Actual Result:** The source account balance becomes negative, in this case -$0.02, and the destination account balance increases, in this case by $409.63 (see the screenshots below)
 
 **Screenshot:**<br>
@@ -287,50 +282,16 @@ Accounts Overview after transfer of amount greater than the available balance: <
 
 ---
 
-## TF-010 - Verify account balances are updated correctly after a successful transfer
+## Notes / Requirement Gaps
 
-**Priority:** High
+During testing, several areas were identified where the expected business behavior is not clearly defined:
 
-**Precondition:** A successful transfer has been completed between two different accounts and the original balances are known.
+- It should be clarified whether transfers are allowed when the **source and destination accounts are the same**. The application allows this, but this is not a valid use case
+- Minimum and maximum allowed values for the **Amount** field should be defined. The expected behavior for amounts below or above these limits should also be specified
+- Currency handling should be defined in requirements. It should be clear whether users can have accounts in different currencies and, which exchange rate and conversion rules should be applied when transferring funds between the accounts
+- It should be specified whether users are allowed to have a **negative account balance**
 
-### Steps:
+## Observed Issues / Behaviors
 
-1. Open **Accounts Overview**.<br>
-   **Expected Result:** The Accounts Overview screen is displayed and both accounts are listed.
-
-2. Check the balance of the source account.<br>
-   **Expected Result:** The source account balance is decreased by exactly the transferred amount.
-
-3. Check the balance of the destination account.<br>
-   **Expected Result:** The destination account balance is increased by exactly the transferred amount.
-
-4. Verify the total balance across the user's accounts, if displayed.<br>
-   **Expected Result:** The total balance remains unchanged because the funds were transferred between the user's own accounts.
-
----
-
-## TF-010 - Verify successful transfer is recorded in transaction history
-
-**Priority:** High
-
-**Precondition:** A successful transfer has been completed and the transfer amount is known.
-
-### Steps:
-
-1. Open **Accounts Overview**.<br>
-   **Expected Result:** The Accounts Overview screen is displayed.
-
-2. Open the source account used in the transfer.<br>
-   **Expected Result:** The account details and transaction history are displayed.
-
-3. Locate the recently completed transfer.<br>
-   **Expected Result:** A transaction corresponding to the transferred amount is present in the source account history.
-
-4. Verify the transaction details.<br>
-   **Expected Result:** The transaction shows the correct amount and is recorded as an outgoing transfer/debit.
-
-5. Open the destination account.<br>
-   **Expected Result:** The destination account details and transaction history are displayed.
-
-6. Locate the corresponding incoming transfer.<br>
-   **Expected Result:** A transaction for the same amount is present and recorded as an incoming transfer/credit.
+- The application accepts **exponential notation** in the Amount field. For example, entering "6e1" is interpreted as "60", the transfer is completed for "$60", and the transaction is displayed as "$60" in Account Activity
+- When an excessively large transfer amount is entered, the application returns a **500 Internal Server Error** instead of handling the input with validation and an appropriate user friendly message
