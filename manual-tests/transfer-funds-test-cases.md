@@ -58,7 +58,8 @@ Amount: $10.00
 Transferred amount: $10.00
 
 **Screenshot:**<br>
-![Accounts Overview](./screenshots/accounts-overview.png)
+![Initial Accounts Overview](./screenshots/initial-accounts-overview.png)
+![Accounts Overview After Transaction](./screenshots/accounts-overview-after-transaction.png)
 ![Accounts Activity](./screenshots/account-activity.png)
 
 ---
