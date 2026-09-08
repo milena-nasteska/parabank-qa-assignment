@@ -249,7 +249,7 @@ Account Overview after transfer with decimal amount: <br>
 
 ---
 
-## TF-009 - Attempt to transfer an amount greater than the available balance
+## TF-009 - Transfer an amount greater than the available balance
 
 **Priority:** High
 
@@ -257,27 +257,37 @@ Account Overview after transfer with decimal amount: <br>
 
 ### Steps:
 
-1. Open **Accounts Overview** and note the available balance of the source account.<br>
-   **Expected Result:** The current balance of the source account is displayed.
+1. Click on **Accounts Overview**, notice and remember the available balance of the source account <br>
+   **Expected Result:** The current balance of the source account is displayed
 
-2. Open **Transfer Funds**.<br>
-   **Expected Result:** The Transfer Funds screen is displayed.
+2. Click on **Transfer Funds** <br>
+   **Expected Result:** The Transfer Funds screen is displayed and shows the fields in their default state
 
-3. Enter an amount greater than the available balance of the source account.<br>
-   **Expected Result:** The entered amount is displayed in the Amount field.
+3. Enter an amount greater than the available balance of the source account, e.g. in this case $409.63 <br>
+   **Expected Result:** The entered amount is displayed in the **Amount** field
 
-4. Select the account with insufficient funds as the From account and a different account as the To account.<br>
-   **Expected Result:** The selected source and destination accounts are displayed correctly.
+4. Select the account with lower balance than the entered amount in the **From** account and a different account in the **To** account <br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly
 
-5. Click **Transfer**.<br>
-   **Expected Result:** The transfer is not completed and an appropriate insufficient-funds validation message is displayed.
+5. Click on **Transfer** <br>
+   **Expected Result:** The transfer is not completed and an appropriate validation message for insufficient available balance is displayed
+   **Actual Result:** The transfer is completed successfully even though the transfer amount exceeds the available balance and the source account balance becomes negative, in this case -$0.02
 
-6. Check the account balances.<br>
-   **Expected Result:** The source and destination account balances remain unchanged.
+7. Check the account balances.<br>
+   **Expected Result:** The source and destination account balances remain unchanged
+   **Actual Result:** The source account balance becomes negative, in this case -$0.02, and the destination account balance increases, in this case by $409.63 (see the screenshots below)
+
+**Screenshot:**<br>
+Transfer amount greater than the available balance: <br>
+![Transfer of Amount greater than the available balance](./screenshots/transfer-amount-greater-than-the-available-balance.png)
+Accounts Overview after transfer of amount greater than the available balance: <br>
+![Accounts Overview after transfer of amount greater than the available balance](./screenshots/accounts-overview-after-transfer-of-amount-greater-than-the-available-balance.png)
+
+**NOTE:** This requires raising a bug 
 
 ---
 
-## TF-009 - Verify account balances are updated correctly after a successful transfer
+## TF-010 - Verify account balances are updated correctly after a successful transfer
 
 **Priority:** High
 
