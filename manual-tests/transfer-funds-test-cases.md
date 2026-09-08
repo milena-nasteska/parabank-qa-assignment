@@ -220,30 +220,36 @@ Account Activity after transfer with non-numeric amount: <br>
 
 ---
 
-## TF-007 - Transfer a valid decimal amount
+## TF-008 - Transfer a valid decimal amount
 
 **Priority:** Medium
 
 ### Steps:
 
-1. Open **Transfer Funds**.<br>
-   **Expected Result:** The Transfer Funds screen is displayed.
+1. Click on **Transfer Funds** <br>
+   **Expected Result:** The Transfer Funds screen is displayed and shows the fields in their default state
 
-2. Enter a valid decimal amount, for example `10.50`.<br>
-   **Expected Result:** The decimal value is accepted and displayed correctly in the Amount field.
+2. Enter a valid decimal amount, for example "7.89" <br>
+   **Expected Result:** The decimal value is accepted and displayed correctly in the **Amount** field
 
-3. Select different From and To accounts.<br>
-   **Expected Result:** The selected source and destination accounts are displayed correctly.
+3. Select different From and To accounts <br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly
 
-4. Click **Transfer**.<br>
-   **Expected Result:** The transfer is completed successfully and a confirmation message is displayed.
+4. Click on **Transfer** <br>
+   **Expected Result:** The transfer is completed successfully and a confirmation message is displayed
 
 5. Open **Accounts Overview**.<br>
-   **Expected Result:** The source account balance is decreased by `10.50` and the destination account balance is increased by `10.50`.
+   **Expected Result:** The source account balance is decreased by "7.89" and the destination account balance is increased by "7.89"
+
+**Screenshot:**<br>
+Transfer with valid decimal amount: <br>
+![Transfer with Decimal Amount](./screenshots/decimal-amount-transfer.png)
+Account Overview after transfer with decimal amount: <br>
+![Account Overview after Decimal Amount transfer](./screenshots/account-overview-after-decimal-amount-transfer.png)
 
 ---
 
-## TF-008 - Attempt to transfer an amount greater than the available balance
+## TF-009 - Attempt to transfer an amount greater than the available balance
 
 **Priority:** High
 
