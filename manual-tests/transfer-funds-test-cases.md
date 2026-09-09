@@ -282,6 +282,40 @@ Accounts Overview after transfer of amount greater than the available balance: <
 
 ---
 
+## TF-010 - Duplicate submission of funds
+
+**Priority:** High
+
+**Preconditions:**
+- User is registered and logged in
+- User has at least two accounts
+- Source account has sufficient balance
+
+### Steps:
+
+1. Click on **Transfer Funds** <br>
+   **Expected Result:** The Transfer Funds screen is displayed
+
+2. Enter a valid transfer amount <br>
+   **Expected Result:** The entered amount is accepted and displayed in the Amount field
+
+3. Select different From and To accounts <br>
+   **Expected Result:** The selected source and destination accounts are displayed correctly
+
+4. Click on the **Transfer** button twice in quick succession <br>
+   **Expected Result:** Only one transfer is processed. The application prevents duplicate submission
+
+5. Click on **Accounts Overview** <br>
+   **Expected Result:** The source and destination balances display only one transfer
+
+6. Open the transaction history for the origin or destination account <br>
+   **Expected Result:** Only one transaction for the transferred funds of the chosen amount is logged
+
+**Test Data:**  
+Amount: $10.00
+
+---
+
 ## Notes / Requirement Gaps
 
 During testing, several areas were identified where the expected business behavior is not clearly defined:
