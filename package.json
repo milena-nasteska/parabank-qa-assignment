@@ -1,0 +1,26 @@
+{
+  "name": "parabank-qa-assignment",
+  "version": "1.0.0",
+  "description": "Testing the ParaBank demo application",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milena-nasteska/parabank-qa-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/milena-nasteska/parabank-qa-assignment/issues"
+  },
+  "homepage": "https://github.com/milena-nasteska/parabank-qa-assignment#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.5.0"
+  }
+}
