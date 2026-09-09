@@ -20,21 +20,21 @@ From the several issues identified during manual testing of the Transfer Funds f
 1. Click on **Transfer Funds**
 2. Enter a negative amount, for example "-$12"
 3. Select different From and To accounts
-4. Click on **Transfer** 
+4. Click on **Transfer**
+5. Click on **Accounts Overview**
+6. Notice the balances of the source and destination accounts
 
 ### Expected Result
 The transfer should not be processed when the entered amount is negative
 
-### Actual Result
-The negative amount is accepted and the transfer is processed successfully
-
-5. Click on **Accounts Overview**
-
-### Expected Result
-The account balances should remain unchanged
+An appropriate validation message should be displayed and the source and destination account balances should remain unchanged
 
 ### Actual Result
-The account balances are changed based on the negative transfer amount. In this case the source account balance is increased by "$12" and the destination account balance is decreased by "$12" 
+The negative amount is accepted, and the transfer is processed successfully in the opposite direction instead of being rejected
+
+When "$12" is transferred:
+- The source account balance is increased by "$12" 
+- The destination account balance is decreased by "$12" 
 
 ### Screenshots:
 ![Negative amount transfer](../manual-tests/screenshots/negative-amount-transfer.png)
