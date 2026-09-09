@@ -1,10 +1,10 @@
 # Transfer Funds - Manual Test Cases
 
 ## Preconditions
-- User is registered and logged in
-- User has at least two accounts: <br>
+- The user is registered and logged in
+- The user has at least two accounts: <br>
   Create a new account via **Open New Account** action
-- Source account has sufficient balance to transfer funds
+- The source account has sufficient balance to transfer funds
 
 ---
 
@@ -286,11 +286,6 @@ Accounts Overview after transfer of amount greater than the available balance: <
 
 **Priority:** High
 
-**Preconditions:**
-- User is registered and logged in
-- User has at least two accounts
-- Source account has sufficient balance
-
 ### Steps:
 
 1. Click on **Transfer Funds** <br>
@@ -308,7 +303,7 @@ Accounts Overview after transfer of amount greater than the available balance: <
 5. Click on **Accounts Overview** <br>
    **Expected Result:** The source and destination balances display only one transfer
 
-6. Open the transaction history for the origin or destination account <br>
+6. Open the transaction history for the source or destination account <br>
    **Expected Result:** Only one transaction for the transferred funds of the chosen amount is logged
 
 **Test Data:**  
